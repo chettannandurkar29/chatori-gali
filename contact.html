@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Chatori Gali</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #5b0c0c;
+            --secondary-color: #e0a910;
+            --accent-color: #00bcd4;
+            --dark-color: #333;
+            --light-color: #fff;
+            --gray-color: #f5f5f5;
+            --text-color: #444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f5f0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Header Styles */
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            height: 80px;
+            background: rgba(91, 12, 12, 0.95);
+        }
+
+        header .navbar {
+            display: flex;
+            padding: 15px 10%;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navbar .nav-logo .logo-text {
+            color: var(--light-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .nav-logo .logo-text span {
+            margin-left: 10px;
+            font-size: 3.0rem;
+        }
+
+        .navbar .nav-menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .nav-menu .nav-link {
+            padding: 8px 15px;
+            color: var(--light-color);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-menu .nav-link:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .navbar .nav-menu .nav-link.active {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-color);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Contact Section */
+        .contact {
+            position: relative;
+            min-height: 100vh;
+            padding: 150px 5% 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(91, 12, 12, 0.7), rgba(91, 12, 12, 0.7)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+        }
+
+        .contact .content {
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact .content h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--light-color);
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact .content p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--light-color);
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .contactinfo {
+            width: 45%;
+            padding: 20px;
+        }
+
+        .contactinfo .box {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .contactinfo .box:last-child {
+            border-bottom: none;
+        }
+
+        .contactinfo .box .icon {
+            min-width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            background-color: var(--accent-color);
+            color: var(--light-color);
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .contactinfo .box .text {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .contactinfo .box .text h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .contactinfo .box .text p {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            color: var(--light-color);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Contact Form */
+        .contactform {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .contactform h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contactform .inputbox {
+            position: relative;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .contactform .inputbox input,
+        .contactform .inputbox textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: var(--gray-color);
+        }
+
+        .contactform .inputbox input:focus,
+        .contactform .inputbox textarea:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
+        }
+
+        .contactform .inputbox textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .contactform .inputbox label {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            padding: 0 5px;
+            pointer-events: none;
+            transition: 0.3s ease;
+            font-size: 1rem;
+            color: #777;
+            background-color: var(--gray-color);
+        }
+
+        .contactform .inputbox input:focus ~ label,
+        .contactform .inputbox textarea:focus ~ label,
+        .contactform .inputbox input:valid ~ label,
+        .contactform .inputbox textarea:valid ~ label {
+            top: -10px;
+            left: 10px;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            background-color: var(--light-color);
+        }
+
+        .contactform .inputbox input[type="submit"] {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contactform .inputbox input[type="submit"]:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Map Section */
+        .map-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 50px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 30px 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact .content h2 {
+                font-size: 2.8rem;
+            }
+            
+            .contact .content p {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            .contactinfo, .contactform {
+                width: 100%;
+            }
+            
+            .contactform {
+                margin-top: 40px;
+            }
+            
+            .navbar .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transition: all 0.5s ease;
+            }
+            
+            .navbar .nav-menu.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact {
+                padding: 120px 5% 60px;
+            }
+            
+            .contact .content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .contactinfo .box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contactinfo .box .icon {
+                margin-bottom: 15px;
+            }
+            
+            .map-container iframe {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact .content h2 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .contactform h2 {
+                font-size: 1.5rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav class="navbar section-content">
+            <a href="#" class="nav-logo">
+                <h2 class="logo-text">🍽 <span>Chatori Gali</span></h2>
+            </a>
+                
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="front1..html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </li>
+            </ul>
+            
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="contact">
+        <div class="content fade-in">
+            <h2>Contact Us</h2>
+            <p>We'd love to hear from you! Whether you have a question about our delicious offerings, want to give feedback, or need help with your order, feel free to get in touch. Your experience at Chatori Gali is important to us, and we're here to assist you with any inquiries or suggestions.</p>
+        </div>
+        
+        <div class="container fade-in delay-1">
+            <div class="contactinfo">
+                <div class="box">
+                    <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                    <div class="text">
+                        <h3>Address</h3>
+                        <p>Chaudhari Ward,<br>Hinganghat<br>442301</p>
+                    </div>
+                </div>
+                
+                <div class="box">
+                    <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                    <div class="text">
+                        <h3>Phone</h3>
+                        <p>+91 9172188949</p>
+                    </div>
+                </div>
+                
+                <div class="box">
+                    <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                    <div class="text">
+                        <h3>Email</h3>
+                        <p>chetanandurkar71@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="box">
+                    <div class="icon"><i class="fa fa-clock" aria-hidden="true"></i></div>
+                    <div class="text">
+                        <h3>Opening Hours</h3>
+                        <p>Monday - Sunday<br>10:00 AM - 11:00 PM</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="contactform">
+                <form id="contactForm" method="POST">
+                    <h2>Send Message</h2>
+                    
+                    <div class="inputbox">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Full Name</label>
+                    </div>
+                    
+                    <div class="inputbox">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    
+                    <div class="inputbox">
+                        <input type="tel" id="phone" name="phone">
+                        <label for="phone">Phone Number (Optional)</label>
+                    </div>
+                    
+                    <div class="inputbox">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    
+                    <div class="inputbox">
+                        <input type="submit" value="Send Message">
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="map-container fade-in delay-2">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.123456789012!2d78.12345678901234!3d20.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDA3JzI0LjQiTiA3OMKwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+    
+    <footer class="fade-in delay-3">
+        <div class="footer-content">
+            <div class="footer-logo">🍽 Chatori Gali</div>
+            <div class="footer-links">
+                <a href="front1..html">Home</a>
+                <a href="about.html">About</a>
+                
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Chatori Gali. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Form submission
+        document.getElementById("contactForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('input[type="submit"]');
+            const originalText = submitBtn.value;
+            submitBtn.value = "Sending...";
+            submitBtn.disabled = true;
+            
+            try {
+                let formData = {
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    phone: document.getElementById("phone").value,
+                    message: document.getElementById("message").value
+                };
+                
+                // Simulate API call (replace with actual fetch)
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // In a real implementation, you would use:
+                /*
+                const response = await fetch("http://127.0.0.1:5000/submit-form", {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                if (!response.ok) {
+                    throw new Error(result.error || "Failed to send message");
+                }
+                */
+                
+                // Show success message
+                alert("Message sent successfully! We'll get back to you soon.");
+                this.reset();
+                
+            } catch (error) {
+                alert("Error: " + error.message);
+            } finally {
+                submitBtn.value = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

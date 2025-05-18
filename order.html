@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatori Gali - Order Now</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap');
+
+        :root {
+            --primary-color: #99a98f;
+            --primary-dark: #7a8a6f;
+            --decent-color: #d6e8db;
+            --accent-color: #fff;
+            --secondary-color: #ff6b6b;
+            --font-family: 'Poppins', sans-serif;
+            --text-color: #555;
+            --dark-text: #333;
+            --shadow: 0 4px 8px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+            text-decoration: none;
+            box-sizing: border-box;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background: #fff;
+            padding: 0 2%;
+            color: var(--dark-text);
+        }
+
+        .header {
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .header-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: none;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .burger-icon {
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .burger-icon:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .search--box {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 20px;
+            background: var(--decent-color);
+            border-radius: 50px;
+            width: 50%;
+            max-width: 400px;
+            transition: var(--transition);
+        }
+
+        .search--box:focus-within {
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        .search--box input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            padding: 4px;
+            color: var(--dark-text);
+        }
+
+        .menu-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-icons i {
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .fa-bowl-food {
+            color: var(--primary-color);
+        }
+
+        .fa-bowl-food:hover {
+            color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .fa-cart-shopping {
+            padding: 10px;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .fa-cart-shopping:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .cart-icon span {
+            background: var(--secondary-color);
+            color: var(--accent-color);
+            border-radius: 10px;
+            width: 18px;
+            height: 18px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            font-weight: bold;
+        }
+
+        .cover {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop);
+            background-size: cover;
+            height: 65vh;
+            min-height: 400px;
+            background-position: center;
+            background-attachment: fixed;
+            border-radius: 10px;
+            margin: 10px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover--overlay {
+            background: rgba(0,0,0,0.5);
+            height: 100%;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 10px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .cover--overlay h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInDown 1s;
+        }
+
+        .slogan {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s;
+        }
+
+        .order-btn {
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            animation: fadeIn 1.5s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .order-btn:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+        }
+
+        .section-heading {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin: 1.5rem 0;
+            color: var(--dark-text);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .menu--list {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu--item {
+            width: 150px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid var(--decent-color);
+            padding: 15px;
+            border-radius: 15px;
+            color: var(--text-color);
+            transition: var(--transition);
+            background: white;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu--item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+        }
+
+        .menu--item img {
+            width: 100%;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .menu--item:hover img {
+            transform: scale(1.1);
+        }
+
+        .menu--item h5 {
+            font-size: 0.9rem;
+            text-align: center;
+            text-transform: capitalize;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .price-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .see-all {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: var(--decent-color);
+        }
+
+        .see-all-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--decent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .see-all i {
+            font-size: 24px;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .see-all:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .see-all:hover .see-all-circle {
+            background-color: var(--primary-dark);
+        }
+
+        .see-all:hover i, .see-all:hover h5 {
+            color: white;
+        }
+
+        /* Special Offers Section */
+        .special-offers {
+            margin: 40px 0;
+        }
+
+        .offer-card {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .offer-card::before {
+            content: 'SPECIAL';
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .offer-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .offer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .offer-details {
+            flex-grow: 1;
+        }
+
+        .offer-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #d32f2f;
+        }
+
+        .offer-description {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .offer-price {
+            display: flex;
+            align-items: center;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #777;
+            margin-right: 10px;
+        }
+
+        .discounted-price {
+            font-weight: bold;
+            color: #d32f2f;
+            font-size: 1.2rem;
+        }
+
+        .offer-timer {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            background: #444;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            margin-top: 20px;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .logo {
+                display: block;
+            }
+            
+            .menu--item {
+                width: calc(25% - 15px);
+            }
+            
+            .cover--overlay h1 {
+                font-size: 5rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .menu--item {
+                width: calc(20% - 15px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .cover--overlay h1 {
+                font-size: 2.5rem;
+            }
+            
+            .slogan {
+                font-size: 1rem;
+            }
+            
+            .menu--item {
+                width: calc(50% - 10px);
+            }
+            
+            .search--box {
+                max-width: 200px;
+            }
+        }
+
+        /* Animation for menu items */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .menu--item {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .menu--item:nth-child(1) { animation-delay: 0.1s; }
+        .menu--item:nth-child(2) { animation-delay: 0.2s; }
+        .menu--item:nth-child(3) { animation-delay: 0.3s; }
+        .menu--item:nth-child(4) { animation-delay: 0.4s; }
+        .menu--item:nth-child(5) { animation-delay: 0.5s; }
+        .menu--item:nth-child(6) { animation-delay: 0.6s; }
+        .menu--item:nth-child(7) { animation-delay: 0.7s; }
+        .menu--item:nth-child(8) { animation-delay: 0.8s; }
+        .menu--item:nth-child(9) { animation-delay: 0.9s; }
+        .menu--item:nth-child(10) { animation-delay: 1s; }
+        .menu--item:nth-child(11) { animation-delay: 1.1s; }
+        .menu--item:nth-child(12) { animation-delay: 1.2s; }
+        .menu--item:nth-child(13) { animation-delay: 1.3s; }
+        .menu--item:nth-child(14) { animation-delay: 1.4s; }
+        .menu--item:nth-child(15) { animation-delay: 1.5s; }
+        .menu--item:nth-child(16) { animation-delay: 1.6s; }
+        .menu--item:nth-child(17) { animation-delay: 1.7s; }
+        .menu--item:nth-child(18) { animation-delay: 1.8s; }
+        .menu--item:nth-child(19) { animation-delay: 1.9s; }
+        .menu--item:nth-child(20) { animation-delay: 2s; }
+        .menu--item:nth-child(21) { animation-delay: 2.1s; }
+        .menu--item:nth-child(22) { animation-delay: 2.2s; }
+
+        /* Floating cart button for mobile */
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 90;
+            transition: var(--transition);
+            display: none;
+        }
+
+        .floating-cart:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .floating-cart span {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .floating-cart {
+                display: flex;
+            }
+        }
+
+        /* Loading spinner */
+        .loading-spinner {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cart-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 200;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .cart-content {
+        background: white;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 10px;
+        padding: 20px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        animation: fadeIn 0.3s;
+    }
+    
+    .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .close-cart {
+        font-size: 24px;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    .close-cart:hover {
+        color: var(--secondary-color);
+    }
+    
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .cart-item-name {
+        flex-grow: 1;
+    }
+    
+    .cart-item-price {
+        font-weight: bold;
+        margin: 0 15px;
+    }
+    
+    .cart-item-remove {
+        color: var(--secondary-color);
+        cursor: pointer;
+        padding: 5px;
+    }
+    
+    .cart-total {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+        padding-top: 10px;
+        border-top: 2px solid var(--primary-color);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    .checkout-btn {
+        width: 100%;
+        padding: 12px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    .checkout-btn:hover {
+        background: var(--primary-dark);
+    }
+    
+    @media (max-width: 576px) {
+        .cart-content {
+            width: 95%;
+            padding: 15px;
+        }
+    }
+
+     
+    </style>
+</head>
+<body>
+    <div class="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="header">
+        <nav class="header-menu">
+            <div class="logo">Chatori Gali</div>
+            <div class="burger-icon">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="search--box">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" placeholder="Search for dishes..."/>
+            </div>
+            <div class="menu-icons">
+                <i class="fa-solid fa-bowl-food"></i>
+                <div class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>3</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="cover">
+        <div class="cover--overlay">
+            <h1><i>Chatori Gali</i></h1>
+            <span class="slogan"><i>Where Taste Takes the Fast Lane</i></span>
+            <a href="#" class="order-btn">Order Now</a>
+        </div>
+    </section>
+
+    <main>
+        <div class="special-offers">
+            <h2 class="section-heading">Today's Special</h2>
+            <div class="offer-card">
+                <div class="offer-image">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1981&auto=format&fit=crop" alt="Special Pizza">
+                </div>
+                <div class="offer-details">
+                    <div class="offer-title">Deluxe Pizza Feast</div>
+                    <div class="offer-description">Large pizza with 3 toppings, garlic bread, and 2 drinks</div>
+                    <div class="offer-price">
+                        <span class="original-price">₹799</span>
+                        <span class="discounted-price">₹599</span>
+                    </div>
+                    <div class="offer-timer">
+                        <i class="fas fa-clock"></i> Offer ends in 4:32:15
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-heading">Food Menu</h2>
+        <div class="menu--list">
+            <div class="menu--item">
+                <span class="price-tag">₹120</span>
+                <img src="https://static.vecteezy.com/system/resources/previews/032/623/006/non_2x/plate-of-vegetable-salad-ai-generative-png.png" alt="Salad">
+                <h5>Fresh Salad</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹80</span>
+                <img src="https://static.vecteezy.com/system/resources/previews/032/508/298/non_2x/a-tempting-burger-on-a-plate-isolated-on-a-transparent-background-fresh-tasty-and-appetizing-with-delicious-layers-ai-generative-free-png.png" alt="Burger">
+                <h5>Cheese Burger</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹250</span>
+                <img src="https://static.vecteezy.com/system/resources/previews/045/969/786/non_2x/transparent-background-isolated-pizza-free-png.png" alt="Pizza">
+                <h5>Margherita Pizza</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹90</span>
+                <img src="https://static.vecteezy.com/system/resources/previews/035/906/997/non_2x/ai-generated-iced-coffee-splash-in-a-cup-with-coffee-beans-free-png.png" alt="Coldcoffee">
+                <h5>Iced Coffee</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹110</span>
+                <img src="https://rosepng.com/wp-content/uploads/2024/02/s11728_momos_isolated_on_white_background_-stylize_200_-v_6_eca8ea9e-7463-4ec0-83b9-5f0a45b51e57_2-photoroom-png-photoroom_11zon5r0knQl.png" alt="Momos">
+                <h5>Steamed Momos</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹70</span>
+                <img src="https://png.pngtree.com/png-vector/20240104/ourmid/pngtree-delicious-veg-roll-png-image_11403008.png" alt="Vegroll">
+                <h5>Veg Spring Roll</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹150</span>
+                <img src="https://www.nicepng.com/png/full/366-3663128_dosa-images-png.png" alt="Dosa">
+                <h5>Masala Dosa</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹60</span>
+                <img src="https://thanjaigroup.com/thanjai_bistro/Bistro-indian-restaurant-menu-french/hotel-bistro-canada/English/images/Menu/Idly1.png" alt="Idli">
+                <h5>Idli Sambar</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹180</span>
+                <img src="http://pluspng.com/img-png/veg-thali-png-mukhya-bhoj-1064.png" alt="Thali">
+                <h5>Special Thali</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹130</span>
+                <img src="https://static.vecteezy.com/system/resources/previews/036/497/912/non_2x/ai-generated-stir-fried-noodles-with-vibrant-vegetables-on-a-white-plate-on-transparent-background-free-png.png" alt="Chowmein">
+                <h5>Veg Chowmein</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹160</span>
+                <img src="https://static.vecteezy.com/system/resources/previews/024/787/912/non_2x/chocolate-cake-with-strawberry-topping-on-white-plate-isolated-chocolate-cake-on-transparent-background-chocolate-cake-bakery-and-pastry-food-photography-free-png.png" alt="Cake">
+                <h5>Chocolate Cake</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹90</span>
+                <img src="https://static.vecteezy.com/system/resources/previews/034/763/929/non_2x/ai-generated-cheese-toasted-sandwich-free-png.png" alt="Sandwich">
+                <h5>Grilled Sandwich</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹70</span>
+                <img src="https://vatans.com/wp-content/uploads/2022/08/dahi-samosa-chat.png" alt="Chat">
+                <h5>Dahi Samosa Chat</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹120</span>
+                <img src="https://static.vecteezy.com/system/resources/previews/027/144/753/original/penne-pasta-with-tomato-sauce-parmesan-cheese-and-basil-on-transparent-background-png.png" alt="Pasta">
+                <h5>Penne Pasta</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹40</span>
+                <img src="https://www.seekpng.com/png/full/254-2548509_best-mumbai-street-food-vada-pav-image-png.png" alt="Vadapav">
+                <h5>Vada Pav</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹100</span>
+                <img src="https://rosepng.com/wp-content/uploads/2024/12/s11728_pav_bhaji_isolated_on_white_background_-stylize_200_b2e7d41e-b988-4514-8e72-48c4ad8fca6d_2-photoroom.png" alt="Pavbhaji">
+                <h5>Pav Bhaji</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹80</span>
+                <img src="https://static.vecteezy.com/system/resources/previews/036/303/390/original/ai-generated-steaming-coffee-cup-hot-beverage-illustration-transparent-background-coffee-mug-clipart-hot-drink-graphic-brewed-coffee-icon-cafe-latte-png.png" alt="Coffee">
+                <h5>Cappuccino</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹90</span>
+                <img src="http://namastebharattaste.com/wp-content/uploads/2023/08/Chana-Kulcha-removebg-preview.png" alt="Chole">
+                <h5>Chole Kulche</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹30</span>
+                <img src="https://www.pngkit.com/png/full/293-2934357_samosa-png.png" alt="Samosa">
+                <h5>Samosa</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹110</span>
+                <img src="https://static.vecteezy.com/system/resources/previews/027/144/758/original/gujarati-khaman-dhokla-isolated-on-transparent-background-png.png" alt="Dhokla">
+                <h5>Dhokla</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹140</span>
+                <img src="https://png.pngtree.com/png-vector/20240726/ourmid/pngtree-chilli-paneer-png-image_13237199.png" alt="Paneer">
+                <h5>Chili Paneer</h5>
+            </div>
+            
+            <!-- See All Items -->
+            <div class="menu--item see-all">
+                <div class="see-all-circle">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <h5>See All Items</h5>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Chatori Gali</h3>
+                <p>Bringing you the authentic street food experience with a modern twist since 2010. Our chefs craft each dish with passion and the finest ingredients.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="front1..html">Home</a>
+                <a href="#">Menu</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> chaudhary ward hinganghat</p>
+                <p><i class="fas fa-phone"></i> +91 9172188949</p>
+                <p><i class="fas fa-envelope"></i> info@chatorigali.com</p>
+                <p><i class="fas fa-clock"></i> 10:00 AM - 11:00 PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Chatori Gali. All Rights Reserved.
+        </div>
+    </footer>
+
+    <div class="floating-cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>3</span>
+    </div>
+
+    <div class="cart-modal">
+    <div class="cart-content">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <span class="close-cart">&times;</span>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span class="total-price">₹0</span>
+        </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+</div>
+
+
+    <script>
+    // Simulate loading
+    document.querySelector('.loading-spinner').style.display = 'flex';
+    setTimeout(() => {
+        document.querySelector('.loading-spinner').style.display = 'none';
+    }, 1500);
+
+    // Cart data
+    let cart = [];
+
+    // DOM elements
+    const menuItems = document.querySelectorAll('.menu--item:not(.see-all)');
+    const cartIcon = document.querySelector('.cart-icon');
+    const floatingCart = document.querySelector('.floating-cart');
+    const cartModal = document.querySelector('.cart-modal');
+    const closeCart = document.querySelector('.close-cart');
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const totalPriceElement = document.querySelector('.total-price');
+    const searchInput = document.querySelector('.search--box input');
+
+    // Cart modal functions
+    function openCart() {
+        updateCartDisplay();
+        cartModal.style.display = 'flex';
+    }
+
+    function updateCartDisplay() {
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const cartItemElement = document.createElement('div');
+            cartItemElement.className = 'cart-item';
+            cartItemElement.innerHTML = `
+                <div class="cart-item-name">${item.name}</div>
+                <div class="cart-item-price">₹${item.price}</div>
+                <div class="cart-item-remove" data-index="${index}">
+                    <i class="fas fa-trash"></i>
+                </div>
+            `;
+            cartItemsContainer.appendChild(cartItemElement);
+            total += parseInt(item.price);
+        });
+
+        totalPriceElement.textContent = `₹${total}`;
+
+        // Update cart count
+        const cartCountElements = document.querySelectorAll('.cart-icon span, .floating-cart span');
+        cartCountElements.forEach(el => {
+            el.textContent = cart.length;
+        });
+
+        // Remove item from cart
+        document.querySelectorAll('.cart-item-remove').forEach(button => {
+            button.addEventListener('click', function () {
+                const index = parseInt(this.getAttribute('data-index'));
+                cart.splice(index, 1);
+                updateCartDisplay();
+            });
+        });
+    }
+
+    // Handle menu item click (add to cart + animation)
+    menuItems.forEach(item => {
+        item.addEventListener('click', function () {
+            // Animation
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'translateY(-5px)';
+            }, 200);
+
+            // Get item data
+            const name = this.querySelector('h5').textContent;
+            const priceText = this.querySelector('.price-tag').textContent.replace(/[^\d]/g, '');
+            const price = parseInt(priceText);
+
+            cart.push({ name, price });
+
+            // Feedback
+            const priceTag = this.querySelector('.price-tag');
+            const originalText = priceTag.textContent;
+            const originalBg = priceTag.style.backgroundColor;
+            priceTag.textContent = 'Added!';
+            priceTag.style.backgroundColor = 'green';
+
+            setTimeout(() => {
+                priceTag.textContent = originalText;
+                priceTag.style.backgroundColor = originalBg;
+            }, 1000);
+
+            // Update cart
+            updateCartDisplay();
+        });
+    });
+
+    // Search functionality
+    searchInput.addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase();
+        menuItems.forEach(item => {
+            const itemName = item.querySelector('h5').textContent.toLowerCase();
+            item.style.display = itemName.includes(searchTerm) ? 'flex' : 'none';
+        });
+    });
+
+    // Special offer timer
+    function updateTimer() {
+        const timerElement = document.querySelector('.offer-timer');
+        let time = timerElement.textContent.match(/\d+/g);
+        if (!time || time.length < 3) return;
+
+        let [hours, minutes, seconds] = time.map(Number);
+
+        seconds--;
+        if (seconds < 0) {
+            seconds = 59;
+            minutes--;
+            if (minutes < 0) {
+                minutes = 59;
+                hours--;
+                if (hours < 0) {
+                    clearInterval(timerInterval);
+                    timerElement.textContent = "Offer expired!";
+                    return;
+                }
+            }
+        }
+
+        timerElement.innerHTML = `<i class="fas fa-clock"></i> Offer ends in ${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    // Responsive logo toggle
+    window.addEventListener('resize', function () {
+        document.querySelector('.logo').style.display = window.innerWidth < 768 ? 'none' : 'block';
+    });
+
+    // Cart modal controls
+    cartIcon.addEventListener('click', openCart);
+    floatingCart.addEventListener('click', openCart);
+    closeCart.addEventListener('click', () => cartModal.style.display = 'none');
+    cartModal.addEventListener('click', (e) => {
+        if (e.target === cartModal) cartModal.style.display = 'none';
+    });
+
+    // Checkout functionality
+    document.querySelector('.checkout-btn').addEventListener('click', function () {
+        if (cart.length === 0) {
+            alert('Your cart is empty!');
+            return;
+        }
+
+        document.querySelector('.loading-spinner').style.display = 'flex';
+
+        setTimeout(() => {
+            document.querySelector('.loading-spinner').style.display = 'none';
+            alert(`Order placed successfully! Total: ${totalPriceElement.textContent}`);
+            cart = [];
+            updateCartDisplay();
+            cartModal.style.display = 'none';
+        }, 2000);
+    });
+</script>

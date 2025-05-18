@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Chatori Gali</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Header Styles */
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, #5b0c0c 0%, #8a1c1c 100%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            height: 80px;
+        }
+
+        header .navbar {
+            display: flex;
+            padding: 15px 5%;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navbar .nav-logo .logo-text {
+            color: white;
+            font-size: 3.0rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar .nav-menu .nav-link {
+            padding: 10px 18px;
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar .nav-menu .nav-link:hover {
+            background: #dfa510;
+            color: #5b0c0c;
+            transform: translateY(-3px);
+        }
+
+        .navbar .nav-menu .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #dfa510;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .navbar .nav-menu .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(91, 12, 12, 0.7), rgba(91, 12, 12, 0.5)), 
+                        url('https://wallpapercrafter.com/desktop3/924673-coffee-cafe-retaurant-cake-lunch-time-meeting.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5% 10%;
+            background-color: #f8f1f2;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 5rem;
+        }
+
+        .about-image-wrapper {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .about-image-wrapper .about-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease;
+        }
+
+        .about-image-wrapper:hover .about-image {
+            transform: scale(1.03);
+        }
+
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 5px solid #dfa510;
+            border-radius: 20px;
+            top: -20px;
+            left: -20px;
+            z-index: -1;
+        }
+
+        .about-details {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .section-title {
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #5b0c0c;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            width: 100px;
+            height: 5px;
+            display: block;
+            margin: 10px auto;
+            border-radius: 8px;
+            background-color: #dfa510;
+        }
+
+        .about-details .text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .social-link-list {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: #5b0c0c;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(223, 165, 16, 0.2);
+        }
+
+        .social-link:hover {
+            color: white;
+            background: #dfa510;
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .navbar .nav-logo .logo-text {
+                font-size: 2rem;
+            }
+            
+            .navbar .nav-menu {
+                gap: 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .navbar .nav-menu {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-section {
+                margin-top: 120px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .about-section {
+                padding: 10% 5%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar .nav-menu {
+                gap: 0.5rem;
+            }
+            
+            .navbar .nav-menu .nav-link {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .about-image-wrapper::before {
+                display: none;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .about-details {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .about-image-wrapper {
+            animation: fadeIn 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <header id="mainHeader">
+        <nav class="navbar section-content">
+            <a href="#" class="nav-logo">
+                <h2 class="logo-text">🍽 Chatori Gali</h2>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="front1..html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Our Story</h1>
+            <p>Discover the passion behind Chatori Gali's authentic flavors</p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="About Chatori Gali" class="about-image">
+        </div>
+        <div class="about-details">
+            <h2 class="section-title">About Us</h2>
+            <p class="text">Chatori Gali is your go-to destination for exploring the vibrant and flavorful world of Indian street food. Inspired by the bustling food lanes across the country, we bring you authentic recipes, hidden gems, and the best culinary experiences that celebrate India's rich food culture.</p>
+            <p class="text">From crispy chaats and sizzling kebabs to sweet delights, our platform is dedicated to food lovers who crave the taste of the streets at home. Whether you're looking for easy-to-follow recipes, food guides, or recommendations on must-visit eateries, Chatori Gali has something for everyone.</p>
+            <p class="text">Join us in this delicious journey as we uncover the magic of Indian street food—one bite at a time!</p>
+            <div class="social-link-list">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/chettan_nandurkar29?igsh=N2d6ZGJsaXVvM2Vx" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
