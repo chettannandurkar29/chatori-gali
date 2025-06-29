@@ -24,7 +24,8 @@ Welcome to **Chatori Gali**, a deliciously designed web project that brings the 
 - **CSS3** – Styling & Layout
 - **JavaScript** – Responsive Navigation
 
-## 
+## 📸 screenshot 
+
 
 ## 📂 Folder Structure
 chatori-gali/
