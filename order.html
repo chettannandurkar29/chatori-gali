@@ -658,107 +658,163 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Cart Modal Styles */
         .cart-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 200;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .cart-content {
-        background: white;
-        width: 90%;
-        max-width: 500px;
-        border-radius: 10px;
-        padding: 20px;
-        max-height: 80vh;
-        overflow-y: auto;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        animation: fadeIn 0.3s;
-    }
-    
-    .cart-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #eee;
-    }
-    
-    .close-cart {
-        font-size: 24px;
-        cursor: pointer;
-        transition: var(--transition);
-    }
-    
-    .close-cart:hover {
-        color: var(--secondary-color);
-    }
-    
-    .cart-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 0;
-        border-bottom: 1px solid #eee;
-    }
-    
-    .cart-item-name {
-        flex-grow: 1;
-    }
-    
-    .cart-item-price {
-        font-weight: bold;
-        margin: 0 15px;
-    }
-    
-    .cart-item-remove {
-        color: var(--secondary-color);
-        cursor: pointer;
-        padding: 5px;
-    }
-    
-    .cart-total {
-        display: flex;
-        justify-content: space-between;
-        margin: 20px 0;
-        padding-top: 10px;
-        border-top: 2px solid var(--primary-color);
-        font-weight: bold;
-        font-size: 1.2rem;
-    }
-    
-    .checkout-btn {
-        width: 100%;
-        padding: 12px;
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: var(--transition);
-    }
-    
-    .checkout-btn:hover {
-        background: var(--primary-dark);
-    }
-    
-    @media (max-width: 576px) {
-        .cart-content {
-            width: 95%;
-            padding: 15px;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
         }
-    }
-
-     
+        
+        .cart-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            padding: 20px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-cart {
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close-cart:hover {
+            color: var(--secondary-color);
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-name {
+            flex-grow: 1;
+        }
+        
+        .cart-item-price {
+            font-weight: bold;
+            margin: 0 15px;
+        }
+        
+        .cart-item-remove {
+            color: var(--secondary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding-top: 10px;
+            border-top: 2px solid var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .checkout-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Receipt Modal Styles */
+        .receipt-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 300;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .receipt-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-family: monospace;
+        }
+        
+        .receipt-header, .receipt-footer, .receipt-total, .receipt-items {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        
+        .receipt-item {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .download-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        @media (max-width: 576px) {
+            .cart-content {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .receipt-content {
+                width: 95%;
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -780,7 +836,7 @@
                 <i class="fa-solid fa-bowl-food"></i>
                 <div class="cart-icon">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <span>3</span>
+                    <span>0</span>
                 </div>
             </div>
         </nav>
@@ -947,7 +1003,7 @@
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
-                <a href="front1..html">Home</a>
+                <a href="front1.html">Home</a>
                 <a href="#">Menu</a>
                 <a href="about.html">About Us</a>
                 <a href="contact.html">Contact</a>
@@ -967,187 +1023,277 @@
 
     <div class="floating-cart">
         <i class="fa-solid fa-cart-shopping"></i>
-        <span>3</span>
+        <span>0</span>
     </div>
 
+    <!-- Cart Modal -->
     <div class="cart-modal">
-    <div class="cart-content">
-        <div class="cart-header">
-            <h3>Your Order</h3>
-            <span class="close-cart">&times;</span>
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Your Order</h3>
+                <span class="close-cart">&times;</span>
+            </div>
+            <div class="cart-items">
+                <!-- Cart items will be added here dynamically -->
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-price">₹0</span>
+            </div>
+            <button class="checkout-btn">Proceed to Checkout</button>
         </div>
-        <div class="cart-items">
-            <!-- Cart items will be added here dynamically -->
-        </div>
-        <div class="cart-total">
-            <span>Total:</span>
-            <span class="total-price">₹0</span>
-        </div>
-        <button class="checkout-btn">Proceed to Checkout</button>
     </div>
-</div>
 
+    <!-- Receipt Modal -->
+    <div class="receipt-modal">
+        <div class="receipt-content">
+            <div class="receipt-header">
+                <h3>Chatori Gali</h3>
+                <p>123 Food Street, Hinganghat</p>
+                <p>+91 9172188949</p>
+                <p>Order #<span id="order-number">1001</span></p>
+                <p id="order-date">Date</p>
+            </div>
+            <div class="receipt-items" id="receipt-items"></div>
+            <div class="receipt-total">
+                <strong>Total:</strong>
+                <span id="receipt-total">₹0</span>
+            </div>
+            <div class="receipt-footer">
+                Thank you for your order!<br>Visit us again
+            </div>
+            <button class="download-btn" id="download-receipt">
+                <i class="fas fa-download"></i> Download Receipt
+            </button>
+        </div>
+    </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-    // Simulate loading
-    document.querySelector('.loading-spinner').style.display = 'flex';
-    setTimeout(() => {
-        document.querySelector('.loading-spinner').style.display = 'none';
-    }, 1500);
+        // Initialize jsPDF
+        const { jsPDF } = window.jspdf;
 
-    // Cart data
-    let cart = [];
+        // Simulate loading
+        document.querySelector('.loading-spinner').style.display = 'flex';
+        setTimeout(() => {
+            document.querySelector('.loading-spinner').style.display = 'none';
+        }, 1500);
 
-    // DOM elements
-    const menuItems = document.querySelectorAll('.menu--item:not(.see-all)');
-    const cartIcon = document.querySelector('.cart-icon');
-    const floatingCart = document.querySelector('.floating-cart');
-    const cartModal = document.querySelector('.cart-modal');
-    const closeCart = document.querySelector('.close-cart');
-    const cartItemsContainer = document.querySelector('.cart-items');
-    const totalPriceElement = document.querySelector('.total-price');
-    const searchInput = document.querySelector('.search--box input');
+        // Cart data
+        let cart = [];
 
-    // Cart modal functions
-    function openCart() {
-        updateCartDisplay();
-        cartModal.style.display = 'flex';
-    }
+        // DOM elements
+        const menuItems = document.querySelectorAll('.menu--item:not(.see-all)');
+        const cartIcon = document.querySelector('.cart-icon');
+        const floatingCart = document.querySelector('.floating-cart');
+        const cartModal = document.querySelector('.cart-modal');
+        const closeCart = document.querySelector('.close-cart');
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const totalPriceElement = document.querySelector('.total-price');
+        const searchInput = document.querySelector('.search--box input');
+        const checkoutBtn = document.querySelector('.checkout-btn');
+        const receiptModal = document.querySelector('.receipt-modal');
+        const receiptItemsContainer = document.getElementById('receipt-items');
+        const receiptTotalElement = document.getElementById('receipt-total');
+        const orderDateElement = document.getElementById('order-date');
+        const orderNumberElement = document.getElementById('order-number');
+        const downloadReceiptBtn = document.getElementById('download-receipt');
 
-    function updateCartDisplay() {
-        cartItemsContainer.innerHTML = '';
-        let total = 0;
+        // Cart modal functions
+        function openCart() {
+            updateCartDisplay();
+            cartModal.style.display = 'flex';
+        }
 
-        cart.forEach((item, index) => {
-            const cartItemElement = document.createElement('div');
-            cartItemElement.className = 'cart-item';
-            cartItemElement.innerHTML = `
-                <div class="cart-item-name">${item.name}</div>
-                <div class="cart-item-price">₹${item.price}</div>
-                <div class="cart-item-remove" data-index="${index}">
-                    <i class="fas fa-trash"></i>
-                </div>
-            `;
-            cartItemsContainer.appendChild(cartItemElement);
-            total += parseInt(item.price);
-        });
+        function closeCartModal() {
+            cartModal.style.display = 'none';
+        }
 
-        totalPriceElement.textContent = `₹${total}`;
+        function updateCartDisplay() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
 
-        // Update cart count
-        const cartCountElements = document.querySelectorAll('.cart-icon span, .floating-cart span');
-        cartCountElements.forEach(el => {
-            el.textContent = cart.length;
-        });
+            cart.forEach((item, index) => {
+                const cartItemElement = document.createElement('div');
+                cartItemElement.className = 'cart-item';
+                cartItemElement.innerHTML = `
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">₹${item.price}</div>
+                    <div class="cart-item-remove" data-index="${index}">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItemElement);
+                total += parseInt(item.price);
+            });
 
-        // Remove item from cart
-        document.querySelectorAll('.cart-item-remove').forEach(button => {
-            button.addEventListener('click', function () {
-                const index = parseInt(this.getAttribute('data-index'));
-                cart.splice(index, 1);
+            totalPriceElement.textContent = `₹${total}`;
+
+            // Update cart count
+            const cartCountElements = document.querySelectorAll('.cart-icon span, .floating-cart span');
+            cartCountElements.forEach(el => {
+                el.textContent = cart.length;
+            });
+
+            // Remove item from cart
+            document.querySelectorAll('.cart-item-remove').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    updateCartDisplay();
+                });
+            });
+        }
+
+        // Handle menu item click (add to cart + animation)
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-5px)';
+                }, 200);
+
+                // Get item data
+                const name = this.querySelector('h5').textContent;
+                const priceText = this.querySelector('.price-tag').textContent.replace(/[^\d]/g, '');
+                const price = parseInt(priceText);
+
+                cart.push({ name, price });
+
+                // Feedback
+                const priceTag = this.querySelector('.price-tag');
+                const originalText = priceTag.textContent;
+                const originalBg = priceTag.style.backgroundColor;
+                priceTag.textContent = 'Added!';
+                priceTag.style.backgroundColor = 'green';
+
+                setTimeout(() => {
+                    priceTag.textContent = originalText;
+                    priceTag.style.backgroundColor = originalBg;
+                }, 1000);
+
+                // Update cart
                 updateCartDisplay();
             });
         });
-    }
 
-    // Handle menu item click (add to cart + animation)
-    menuItems.forEach(item => {
-        item.addEventListener('click', function () {
-            // Animation
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = 'translateY(-5px)';
-            }, 200);
-
-            // Get item data
-            const name = this.querySelector('h5').textContent;
-            const priceText = this.querySelector('.price-tag').textContent.replace(/[^\d]/g, '');
-            const price = parseInt(priceText);
-
-            cart.push({ name, price });
-
-            // Feedback
-            const priceTag = this.querySelector('.price-tag');
-            const originalText = priceTag.textContent;
-            const originalBg = priceTag.style.backgroundColor;
-            priceTag.textContent = 'Added!';
-            priceTag.style.backgroundColor = 'green';
-
-            setTimeout(() => {
-                priceTag.textContent = originalText;
-                priceTag.style.backgroundColor = originalBg;
-            }, 1000);
-
-            // Update cart
-            updateCartDisplay();
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            menuItems.forEach(item => {
+                const itemName = item.querySelector('h5').textContent.toLowerCase();
+                item.style.display = itemName.includes(searchTerm) ? 'flex' : 'none';
+            });
         });
-    });
 
-    // Search functionality
-    searchInput.addEventListener('input', function () {
-        const searchTerm = this.value.toLowerCase();
-        menuItems.forEach(item => {
-            const itemName = item.querySelector('h5').textContent.toLowerCase();
-            item.style.display = itemName.includes(searchTerm) ? 'flex' : 'none';
-        });
-    });
+        // Special offer timer
+        function updateTimer() {
+            const timerElement = document.querySelector('.offer-timer');
+            let time = timerElement.textContent.match(/\d+/g);
+            if (!time || time.length < 3) return;
 
-    // Special offer timer
-    function updateTimer() {
-        const timerElement = document.querySelector('.offer-timer');
-        let time = timerElement.textContent.match(/\d+/g);
-        if (!time || time.length < 3) return;
+            let [hours, minutes, seconds] = time.map(Number);
 
-        let [hours, minutes, seconds] = time.map(Number);
-
-        seconds--;
-        if (seconds < 0) {
-            seconds = 59;
-            minutes--;
-            if (minutes < 0) {
-                minutes = 59;
-                hours--;
-                if (hours < 0) {
-                    clearInterval(timerInterval);
-                    timerElement.textContent = "Offer expired!";
-                    return;
+            seconds--;
+            if (seconds < 0) {
+                seconds = 59;
+                minutes--;
+                if (minutes < 0) {
+                    minutes = 59;
+                    hours--;
+                    if (hours < 0) {
+                        clearInterval(timerInterval);
+                        timerElement.textContent = "Offer expired!";
+                        return;
+                    }
                 }
             }
+
+            timerElement.innerHTML = `<i class="fas fa-clock"></i> Offer ends in ${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
 
-        timerElement.innerHTML = `<i class="fas fa-clock"></i> Offer ends in ${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
+        const timerInterval = setInterval(updateTimer, 1000);
 
-    const timerInterval = setInterval(updateTimer, 1000);
+        // Responsive logo toggle
+        window.addEventListener('resize', function() {
+            document.querySelector('.logo').style.display = window.innerWidth < 768 ? 'none' : 'block';
+        });
 
-    // Responsive logo toggle
-    window.addEventListener('resize', function () {
-        document.querySelector('.logo').style.display = window.innerWidth < 768 ? 'none' : 'block';
-    });
+        // Cart modal controls
+        cartIcon.addEventListener('click', openCart);
+        floatingCart.addEventListener('click', openCart);
+        closeCart.addEventListener('click', closeCartModal);
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) closeCartModal();
+        });
 
-    // Cart modal controls
-    cartIcon.addEventListener('click', openCart);
-    floatingCart.addEventListener('click', openCart);
-    closeCart.addEventListener('click', () => cartModal.style.display = 'none');
-    cartModal.addEventListener('click', (e) => {
-        if (e.target === cartModal) cartModal.style.display = 'none';
-    });
+        // Checkout functionality
+        checkoutBtn.addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
 
-    // Checkout functionality
-    document.querySelector('.checkout-btn').addEventListener('click', function () {
-        if (cart.length === 0) {
-            alert('Your cart is empty!');
-            return;
+            document.querySelector('.loading-spinner').style.display = 'flex';
+
+            setTimeout(() => {
+                document.querySelector('.loading-spinner').style.display = 'none';
+                generateReceipt();
+                closeCartModal();
+                cart = [];
+                updateCartDisplay();
+            }, 1000);
+        });
+
+        // Generate receipt
+        function generateReceipt() {
+            receiptItemsContainer.innerHTML = '';
+
+            let total = 0;
+            const orderDate = new Date();
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            orderDateElement.textContent = orderDate.toLocaleDateString('en-IN', options);
+            orderNumberElement.textContent = Math.floor(1000 + Math.random() * 9000);
+
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'receipt-item';
+                div.innerHTML = `<span>${item.name}</span><span>₹${item.price}</span>`;
+                receiptItemsContainer.appendChild(div);
+                total += item.price;
+            });
+
+            receiptTotalElement.textContent = `₹${total}`;
+            receiptModal.style.display = 'flex';
         }
 
-        document.querySelector('.loading-spinner').style.display = 'flex';
+        // Close receipt modal when clicking outside
+        receiptModal.addEventListener('click', (e) => {
+            if (e.target === receiptModal) {
+                receiptModal.style.display = 'none';
+            }
+        });
 
-        setTimeout(() => {
-            document.querySelector('.loading-spinner').style.display = 'none';
-            alert(`Order placed successfully! Total: ${totalPriceElement.textContent}`);
-            cart = [];
-            updateCartDisplay();
-            cartModal.style.display = 'none';
-        }, 2000);
-    });
-</script>
+        // Download receipt as PDF
+        downloadReceiptBtn.addEventListener('click', function() {
+            const receipt = document.querySelector('.receipt-content');
+            html2canvas(receipt).then(canvas => {
+                const pdf = new jsPDF('p', 'mm', 'a5');
+                const imgData = canvas.toDataURL('image/png');
+                const imgWidth = 140;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+                pdf.save('ChatoriGali_Receipt.pdf');
+            });
+        });
+    </script>
+</body>
+</html>
