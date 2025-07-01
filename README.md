@@ -4,7 +4,7 @@ Welcome to **Chatori Gali**, a deliciously designed web project that brings the 
 
 ## 📌 Project Overview
 
-**Chatori Gali** is a responsive and visually engaging website created using **HTML, CSS, and JavaScript**. It showcases a fictional food brand offering spicy, flavorful, and authentic Indian street food. The project emphasizes user-friendly navigation and vibrant visuals to reflect the lively spirit of Indian food culture.
+**Chatori Gali** is a responsive and visually engaging website created using **HTML, CSS, and JavaScript**. It showcases a fictional food brand offering spicy, flavorful, and authentic Indian street food. The project emphasizes user-friendly navigation and vibrant visuals to reflect the lively spirit of Indian food culture. chatori-gali.vercel.app/front1.html
 
 ## 💡 Features
 
