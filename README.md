@@ -25,6 +25,11 @@ Welcome to **Chatori Gali**, a deliciously designed web project that brings the 
 - **JavaScript** – Responsive Navigation
 
 ## 📸 screenshot 
+![Screenshot 2025-07-03 223314](https://github.com/user-attachments/assets/8023d450-c059-4b7e-87ff-d9e3771698d2)
+![Screenshot 2025-07-03 223343](https://github.com/user-attachments/assets/8b48940b-5611-45ea-bc99-36e851b54f7f)
+![Screenshot 2025-07-03 223505](https://github.com/user-attachments/assets/5e035e1d-f1fd-4b55-b1d2-6cc95fc0ec20)
+
+
 
 
 ## 📂 Folder Structure
