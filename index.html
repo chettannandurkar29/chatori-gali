@@ -804,6 +804,109 @@
             background: var(--primary-dark);
         }
         
+        /* Customer Modal */
+        .customer-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 400;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .customer-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .customer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-customer {
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close-customer:hover {
+            color: var(--secondary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Thank You Message */
+        .thank-you {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .thank-you h3 {
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+        
+        /* Customer info in receipt */
+        .customer-info {
+            padding: 10px 0;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .customer-info p {
+            margin: 5px 0;
+        }
+        
         @media (max-width: 576px) {
             .cart-content {
                 width: 95%;
@@ -811,6 +914,11 @@
             }
             
             .receipt-content {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .customer-content {
                 width: 95%;
                 padding: 15px;
             }
@@ -873,6 +981,7 @@
 
         <h2 class="section-heading">Food Menu</h2>
         <div class="menu--list">
+            <!-- Menu items (same as before) -->
             <div class="menu--item">
                 <span class="price-tag">₹120</span>
                 <img src="https://static.vecteezy.com/system/resources/previews/032/623/006/non_2x/plate-of-vegetable-salad-ai-generative-png.png" alt="Salad">
@@ -1007,6 +1116,15 @@
                 <h5>See All Items</h5>
             </div>
         </div>
+        
+        <!-- Thank You Message -->
+        <div class="thank-you" id="thank-you">
+            <i class="fas fa-check-circle" style="font-size: 48px; color: var(--primary-color); margin-bottom: 15px;"></i>
+            <h3>Thank You for Your Order!</h3>
+            <p>Your food is being prepared and will be delivered shortly.</p>
+            <p>Order ID: <strong id="order-id-display"></strong></p>
+            <p>Estimated Delivery Time: <strong>35-45 minutes</strong></p>
+        </div>
     </main>
 
     <footer>
@@ -1073,6 +1191,9 @@
                 <p>Order #<span id="order-number">1001</span></p>
                 <p id="order-date">Date</p>
             </div>
+            <div class="customer-info" id="customer-info">
+                <!-- Customer info will be added here -->
+            </div>
             <div class="receipt-items" id="receipt-items"></div>
             <div class="receipt-total">
                 <strong>Total:</strong>
@@ -1084,6 +1205,35 @@
             <button class="download-btn" id="download-receipt">
                 <i class="fas fa-download"></i> Download Receipt
             </button>
+        </div>
+    </div>
+
+    <!-- Customer Details Modal -->
+    <div class="customer-modal">
+        <div class="customer-content">
+            <div class="customer-header">
+                <h3>Customer Information</h3>
+                <span class="close-customer">&times;</span>
+            </div>
+            <form id="customer-form">
+                <div class="form-group">
+                    <label for="customer-name">Full Name*</label>
+                    <input type="text" id="customer-name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">Phone Number*</label>
+                    <input type="tel" id="customer-phone" required placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="customer-email">Email</label>
+                    <input type="email" id="customer-email" placeholder="Enter your email (optional)">
+                </div>
+                <div class="form-group">
+                    <label for="delivery-address">Delivery Address</label>
+                    <textarea id="delivery-address" rows="3" placeholder="Enter delivery address (optional)"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Complete Order</button>
+            </form>
         </div>
     </div>
 
@@ -1101,6 +1251,7 @@
 
         // Cart data
         let cart = [];
+        let customerDetails = {};
 
         // DOM elements
         const menuItems = document.querySelectorAll('.menu--item:not(.see-all)');
@@ -1118,6 +1269,12 @@
         const orderDateElement = document.getElementById('order-date');
         const orderNumberElement = document.getElementById('order-number');
         const downloadReceiptBtn = document.getElementById('download-receipt');
+        const customerModal = document.querySelector('.customer-modal');
+        const closeCustomer = document.querySelector('.close-customer');
+        const customerForm = document.getElementById('customer-form');
+        const customerInfoContainer = document.getElementById('customer-info');
+        const thankYouMessage = document.getElementById('thank-you');
+        const orderIdDisplay = document.getElementById('order-id-display');
 
         // Cart modal functions
         function openCart() {
@@ -1248,27 +1405,74 @@
             if (e.target === cartModal) closeCartModal();
         });
 
+        // Customer modal controls
+        function openCustomerModal() {
+            customerModal.style.display = 'flex';
+        }
+
+        function closeCustomerModal() {
+            customerModal.style.display = 'none';
+        }
+
+        closeCustomer.addEventListener('click', closeCustomerModal);
+        customerModal.addEventListener('click', (e) => {
+            if (e.target === customerModal) {
+                closeCustomerModal();
+            }
+        });
+
         // Checkout functionality
         checkoutBtn.addEventListener('click', function() {
             if (cart.length === 0) {
                 alert('Your cart is empty!');
                 return;
             }
+            openCustomerModal();
+        });
 
+        // Handle form submission
+        customerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('customer-name').value;
+            const phone = document.getElementById('customer-phone').value;
+            const email = document.getElementById('customer-email').value;
+            const address = document.getElementById('delivery-address').value;
+            
+            if (!name || !phone) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Store customer details
+            customerDetails = {
+                name,
+                phone,
+                email,
+                address
+            };
+            
+            closeCustomerModal();
+            
             document.querySelector('.loading-spinner').style.display = 'flex';
-
+            
             setTimeout(() => {
                 document.querySelector('.loading-spinner').style.display = 'none';
                 generateReceipt();
                 closeCartModal();
-                cart = [];
-                updateCartDisplay();
+                
+                // Show thank you message
+                thankYouMessage.style.display = 'block';
+                const orderId = Math.floor(1000 + Math.random() * 9000);
+                orderIdDisplay.textContent = `CG-${orderId}`;
+                orderIdDisplay.scrollIntoView({ behavior: 'smooth' });
             }, 1000);
         });
 
-        // Generate receipt
+        // Generate receipt with customer details
         function generateReceipt() {
             receiptItemsContainer.innerHTML = '';
+            customerInfoContainer.innerHTML = '';
 
             let total = 0;
             const orderDate = new Date();
@@ -1282,6 +1486,16 @@
             orderDateElement.textContent = orderDate.toLocaleDateString('en-IN', options);
             orderNumberElement.textContent = Math.floor(1000 + Math.random() * 9000);
 
+            // Add customer info
+            const customerInfo = document.createElement('div');
+            customerInfo.innerHTML = `
+                <p><strong>Customer:</strong> ${customerDetails.name}</p>
+                <p><strong>Phone:</strong> ${customerDetails.phone}</p>
+                ${customerDetails.email ? `<p><strong>Email:</strong> ${customerDetails.email}</p>` : ''}
+                ${customerDetails.address ? `<p><strong>Address:</strong> ${customerDetails.address}</p>` : ''}
+            `;
+            customerInfoContainer.appendChild(customerInfo);
+
             cart.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'receipt-item';
@@ -1292,6 +1506,10 @@
 
             receiptTotalElement.textContent = `₹${total}`;
             receiptModal.style.display = 'flex';
+            
+            // Clear cart after generating receipt
+            cart = [];
+            updateCartDisplay();
         }
 
         // Close receipt modal when clicking outside
@@ -1310,7 +1528,7 @@
                 const imgWidth = 140;
                 const imgHeight = canvas.height * imgWidth / canvas.width;
                 pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
-                pdf.save('ChatoriGali_Receipt.pdf');
+                pdf.save(`ChatoriGali_Receipt_${orderNumberElement.textContent}.pdf`);
             });
         });
     </script>
