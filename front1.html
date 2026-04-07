@@ -6,147 +6,75 @@
     <title>Chatori Gali - Food Delivery</title>
     <link rel="stylesheet" href="style.css">
 </head>
-  <body>
+<body>
     <header>
         <nav class="navbar section-content">
-            <main>
-                <section class="hero-section">
-                    <div class="section-content">
-                        <div class="hero-details">
-                            <h2 class="title">Best food</h2>
-                            <h3 class="subtitle">Dipped in Masala, Served With Love!</h3>
-                            <p class="description">Welcome to Chatori Gali, a street food heaven,
-                                buzzing with flavors, aromas, and culinary delights.
-                                From spicy chaats to jelabis, it's a paradise for food lovers,
-                                offering the true essence of India's rich street food culture.</p>
-                    
-                            <div class="buttons">
-                                <a href="index.html" class="button order-now">Order Now</a>
-                                <a href="contact.html" class="button contact-us">Contact Us</a>
-                            </div>
-                        </div>
-                        <div class="hero-image-wrapper">
-                            <img src="https://static.vecteezy.com/system/resources/previews/022/911/684/non_2x/classic-chicken-burger-free-illustration-icon-free-png.png" alt="burger" class="hero-image">
-                        </div>
-                    </div>
-                </section>
+            <a href="front1.html" class="nav-logo">
+                <h2 class="logo-text">Chatori Gali</h2>
+            </a>
 
-                <!-- Login Form -->
-                <section id="login" class="auth-section">
-                    <div class="section-content">
-                        <div class="auth-form">
-                            <h2>Login to Your Account</h2>
-                            <form id="loginForm">
-                                <div class="form-group">
-                                    <label for="login-email">Email</label>
-                                    <input type="email" id="login-email" name="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="login-password">Password</label>
-                                    <input type="password" id="login-password" name="password" required>
-                                </div>
-                                <button type="submit" class="button auth-button">Login</button>
-                                <p class="auth-link">Don't have an account? <a href="#signup">Sign up here</a></p>
-                            </form>
-                            <div id="loginMessage" class="message"></div>
-                        </div>
-                    </div>
-                </section>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="front1.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link">Menu</a></li>
+            </ul>
 
-                <!-- Signup Form -->
-                <section id="signup" class="auth-section">
-                    <div class="section-content">
-                        <div class="auth-form">
-                            <h2>Create Your Account</h2>
-                            <form id="signupForm">
-                                <div class="form-group">
-                                    <label for="signup-name">Full Name</label>
-                                    <input type="text" id="signup-name" name="name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="signup-email">Email</label>
-                                    <input type="email" id="signup-email" name="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="signup-password">Password (min 6 characters)</label>
-                                    <input type="password" id="signup-password" name="password" minlength="6" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="signup-confirm">Confirm Password</label>
-                                    <input type="password" id="signup-confirm" name="confirm_password" required>
-                                </div>
-                                <button type="submit" class="button auth-button">Sign Up</button>
-                                <p class="auth-link">Already have an account? <a href="#login">Login here</a></p>
-                            </form>
-                            <div id="signupMessage" class="message"></div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-                    </div>
-                </div>
+            <button id="themeToggle" class="theme-toggle-btn" type="button">Dark Mode</button>
 
-                <div id="cart" class="cart">
-                    <h3>Your Cart</h3>
-                    <ul id="cartList"></ul>
-                    <p>Total: ₹<span id="cartTotal">0</span></p>
-                    <button id="checkout" class="button">Checkout & Generate QR</button>
-                    <div id="qrArea" style="margin-top:12px"></div>
-                </div>
+            <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
-        </section>
-        <!-- Login Form -->
-        <section id="login" class="auth-section">
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
             <div class="section-content">
-                <div class="auth-form">
-                    <h2>Login to Your Account</h2>
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="login-email">Email</label>
-                            <input type="email" id="login-email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="login-password">Password</label>
-                            <input type="password" id="login-password" name="password" required>
-                        </div>
-                        <button type="submit" class="button auth-button">Login</button>
-                        <p class="auth-link">Don't have an account? <a href="#signup">Sign up here</a></p>
-                    </form>
-                    <div id="loginMessage" class="message"></div>
+                <div class="hero-details">
+                    <h2 class="title">Best Food</h2>
+                    <h3 class="subtitle">Dipped in Masala, Served With Love!</h3>
+                    <p class="description">
+                        Welcome to Chatori Gali, a street food heaven buzzing with flavors, aromas, and culinary delights.
+                        From spicy chaats to jalebis, it is a paradise for food lovers, offering the true essence of
+                        India&apos;s rich street food culture.
+                    </p>
+
+                    <div class="buttons">
+                        <a href="index.html" class="button order-now">Order Now</a>
+                        <a href="contact.html" class="button contact-us">Contact Us</a>
+                    </div>
+                </div>
+
+                <div class="hero-image-wrapper">
+                    <img src="https://static.vecteezy.com/system/resources/previews/022/911/684/non_2x/classic-chicken-burger-free-illustration-icon-free-png.png" alt="Burger" class="hero-image">
                 </div>
             </div>
         </section>
 
-        <!-- Signup Form -->
-        <section id="signup" class="auth-section">
+        <section class="subscribe-section">
             <div class="section-content">
-                <div class="auth-form">
-                    <h2>Create Your Account</h2>
-                    <form id="signupForm">
-                        <div class="form-group">
-                            <label for="signup-name">Full Name</label>
-                            <input type="text" id="signup-name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signup-email">Email</label>
-                            <input type="email" id="signup-email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signup-password">Password (min 6 characters)</label>
-                            <input type="password" id="signup-password" name="password" minlength="6" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signup-confirm">Confirm Password</label>
-                            <input type="password" id="signup-confirm" name="confirm_password" required>
-                        </div>
-                        <button type="submit" class="button auth-button">Sign Up</button>
-                        <p class="auth-link">Already have an account? <a href="#login">Login here</a></p>
+                <div class="subscribe-card">
+                    <h2>Subscribe for Fresh Offers</h2>
+                    <p>Get weekly street food deals, new dish alerts, and festival combos directly in your inbox.</p>
+                    <form id="subscribeForm" class="subscribe-form">
+                        <input id="subscribeEmail" type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="button order-now">Subscribe</button>
                     </form>
-                    <div id="signupMessage" class="message"></div>
+                    <p id="subscribeMessage" class="message"></p>
                 </div>
             </div>
         </section>
+
     </main>
+
+    <div class="floating-actions" aria-label="Quick Contact">
+        <a class="float-btn whatsapp-btn" href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a class="float-btn call-btn" href="tel:+919999999999">Call Now</a>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

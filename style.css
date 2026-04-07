@@ -51,6 +51,35 @@ body {
     color: var(--dark-color);
 }
 
+body.dark-mode {
+    background-color: #1a202c;
+    color: #f3f4f6;
+}
+
+body.dark-mode header {
+    background: #7f1d1d;
+}
+
+body.dark-mode .auth-form,
+body.dark-mode .subscribe-card {
+    background: #111827;
+    color: #f3f4f6;
+    border-top-color: var(--accent-color);
+}
+
+body.dark-mode .form-group label,
+body.dark-mode .auth-link,
+body.dark-mode .subscribe-card p {
+    color: #e5e7eb;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .subscribe-form input {
+    background: #1f2937;
+    color: #f3f4f6;
+    border-color: #374151;
+}
+
 /* Decorative Elements */
 body::before {
     content: "";
@@ -94,6 +123,22 @@ header.scrolled {
     align-items: center;
     justify-content: space-between;
     position: relative;
+}
+
+.theme-toggle-btn {
+    padding: 10px 14px;
+    border-radius: var(--border-radius-s);
+    border: 2px solid var(--accent-color);
+    background: transparent;
+    color: var(--white-color);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    background: var(--accent-color);
+    color: var(--dark-color);
 }
 
 .nav-logo .logo-text {
@@ -283,6 +328,143 @@ header.scrolled {
     color: var(--accent-color);
 }
 
+/* Subscription Section */
+.subscribe-section {
+    padding: var(--section-spacing) 0;
+}
+
+.subscribe-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--white-color);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid var(--secondary-color);
+    text-align: center;
+}
+
+.subscribe-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 0.7rem;
+}
+
+.subscribe-form {
+    margin-top: 1rem;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.subscribe-form input {
+    flex: 1;
+    min-width: 240px;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius-s);
+    font-size: 1rem;
+}
+
+/* Floating contact buttons */
+.floating-actions {
+    position: fixed;
+    right: 20px;
+    bottom: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 20;
+}
+
+.float-btn {
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: var(--border-radius-m);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.float-btn:hover {
+    transform: translateY(-2px);
+}
+
+.whatsapp-btn {
+    background: #25d366;
+}
+
+.call-btn {
+    background: #2563eb;
+}
+
+/* Quick Food Finder */
+.finder-section {
+    padding: 3rem 0;
+    background: linear-gradient(180deg, rgba(234, 226, 183, 0.35), rgba(255, 255, 255, 0.9));
+}
+
+.finder-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--white-color);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid var(--secondary-color);
+}
+
+.finder-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.finder-card p {
+    margin-bottom: 1rem;
+}
+
+.finder-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: end;
+}
+
+.finder-form .button {
+    grid-column: span 2;
+}
+
+.finder-form select,
+.finder-form input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius-s);
+    font-size: 1rem;
+}
+
+.finder-result {
+    margin-top: 1rem;
+    padding: 0.9rem;
+    border-radius: var(--border-radius-s);
+    font-weight: var(--font-weight-medium);
+    min-height: 3rem;
+}
+
+.finder-result.success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+.finder-result.error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
 .hero-image-wrapper {
     flex: 1;
     min-width: 300px;
@@ -297,6 +479,18 @@ header.scrolled {
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
     animation: float 3s ease-in-out infinite;
     transform-origin: center;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-18px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 /* Enhanced Auth Sections */
@@ -516,6 +710,10 @@ header.scrolled {
 }
 
 @media (max-width: 768px) {
+    .theme-toggle-btn {
+        order: 3;
+    }
+
     .hamburger {
         display: block;
     }
@@ -563,6 +761,23 @@ header.scrolled {
     
     .auth-form {
         padding: 1.5rem;
+    }
+
+    .subscribe-form {
+        flex-direction: column;
+    }
+
+    .subscribe-form input,
+    .subscribe-form .button {
+        width: 100%;
+    }
+
+    .finder-form {
+        grid-template-columns: 1fr;
+    }
+
+    .finder-form .button {
+        grid-column: span 1;
     }
 }
 
