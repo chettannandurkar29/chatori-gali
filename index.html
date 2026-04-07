@@ -57,10 +57,19 @@
         }
 
         .logo {
-            display: none;
+            display: block;
+            font-family: 'Dancing Script', cursive;
             font-weight: 700;
-            color: var(--primary-color);
-            font-size: 1.2rem;
+            font-size: 1.9rem;
+            line-height: 1;
+            letter-spacing: 0.5px;
+            background: linear-gradient(90deg, #5b6b4f, #99a98f 45%, #d4a35f 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+            white-space: nowrap;
+            padding-right: 4px;
         }
 
         .burger-icon {
@@ -99,6 +108,38 @@
             width: 100%;
             padding: 4px;
             color: var(--dark-text);
+        }
+
+        .voice-search-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            color: var(--primary-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(122, 138, 111, 0.35);
+            flex-shrink: 0;
+        }
+
+        .voice-search-btn:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .voice-search-btn.listening {
+            background: var(--secondary-color);
+            color: #fff;
+            animation: pulseMic 1s infinite;
+        }
+
+        @keyframes pulseMic {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.6); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
         }
 
         .menu-icons {
@@ -513,10 +554,6 @@
 
         /* Responsive Design */
         @media (min-width: 768px) {
-            .logo {
-                display: block;
-            }
-            
             .menu--item {
                 width: calc(25% - 15px);
             }
@@ -826,7 +863,113 @@
             padding: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        
+
+        .add-food-wrap {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin: 0 0 14px;
+        }
+
+        .add-food-btn {
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-food-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .spin-btn {
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: #ff8f3f;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .spin-btn:hover {
+            background: #ef7f2f;
+        }
+
+        .combo-btn {
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: #3a86ff;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .combo-btn:hover {
+            background: #2f74df;
+        }
+
+        .mood-btn {
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: #7b5cff;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mood-btn:hover {
+            background: #694be0;
+        }
+
+        .reward-note {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #2f4f4f;
+        }
+
+        .spin-wheel {
+            text-align: center;
+            margin: 12px 0;
+            padding: 14px;
+            border-radius: 10px;
+            background: #fff6ef;
+            border: 1px solid #ffd9be;
+        }
+
+        .spin-wheel h4 {
+            margin-bottom: 8px;
+            color: #8a4f1f;
+        }
+
+        .spin-result {
+            margin-top: 10px;
+            font-weight: 700;
+            color: #2f4f4f;
+            min-height: 22px;
+        }
+
+        .combo-result {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #2f4f4f;
+            min-height: 22px;
+        }
+
+        .mood-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            background: #fff;
+        }
+
         .customer-header {
             display: flex;
             justify-content: space-between;
@@ -939,6 +1082,9 @@
             <div class="search--box">
                 <i class="fa fa-search" aria-hidden="true"></i>
                 <input type="text" placeholder="Search for dishes..."/>
+                <button class="voice-search-btn" id="voice-search-btn" aria-label="Voice search" title="Search by voice">
+                    <i class="fas fa-microphone"></i>
+                </button>
             </div>
             <div class="menu-icons">
                 <i class="fa-solid fa-bowl-food"></i>
@@ -980,6 +1126,20 @@
         </div>
 
         <h2 class="section-heading">Food Menu</h2>
+        <div class="add-food-wrap">
+            <button class="mood-btn" id="open-mood-modal">
+                <i class="fas fa-face-smile"></i> Mood Picks
+            </button>
+            <button class="combo-btn" id="open-combo-modal">
+                <i class="fas fa-wand-magic-sparkles"></i> Smart Combo
+            </button>
+            <button class="spin-btn" id="open-spin-modal">
+                <i class="fas fa-gift"></i> Lucky Spin
+            </button>
+            <button class="add-food-btn" id="open-food-modal">
+                <i class="fas fa-plus"></i> Add Your Food Item
+            </button>
+        </div>
         <div class="menu--list">
             <!-- Menu items (same as before) -->
             <div class="menu--item">
@@ -1107,6 +1267,31 @@
                 <img src="https://static.vecteezy.com/system/resources/previews/044/813/491/non_2x/butter-paratha-isolated-on-transparent-background-free-png.png" alt="paratha">
                 <h5>paratha</h5>
             </div>
+            <div class="menu--item">
+                <span class="price-tag">₹170</span>
+                <img src="https://pngimg.com/d/pasta_PNG58.png" alt="White Sauce Pasta">
+                <h5>White Sauce Pasta</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹95</span>
+                <img src="https://pngimg.com/d/french_fries_PNG20.png" alt="French Fries">
+                <h5>French Fries</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹120</span>
+                <img src="https://pngimg.com/d/noodles_PNG64.png" alt="Hakka Noodles">
+                <h5>Hakka Noodles</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹210</span>
+                <img src="https://pngimg.com/d/tandoori_chicken_PNG30.png" alt="Tandoori Platter">
+                <h5>Tandoori Platter</h5>
+            </div>
+            <div class="menu--item">
+                <span class="price-tag">₹70</span>
+                <img src="https://pngimg.com/d/lassi_PNG31.png" alt="Sweet Lassi">
+                <h5>Sweet Lassi</h5>
+            </div>
             
             <!-- See All Items -->
             <div class="menu--item see-all">
@@ -1177,6 +1362,7 @@
                 <span>Total:</span>
                 <span class="total-price">₹0</span>
             </div>
+            <div class="reward-note" id="reward-note"></div>
             <button class="checkout-btn">Proceed to Checkout</button>
         </div>
     </div>
@@ -1199,6 +1385,7 @@
                 <strong>Total:</strong>
                 <span id="receipt-total">₹0</span>
             </div>
+            <div class="receipt-item" id="receipt-reward" style="display:none; margin-bottom:10px;"></div>
             <div class="receipt-footer">
                 Thank you for your order!<br>Visit us again
             </div>
@@ -1237,6 +1424,93 @@
         </div>
     </div>
 
+    <!-- User Add Food Modal -->
+    <div class="customer-modal" id="food-modal">
+        <div class="customer-content">
+            <div class="customer-header">
+                <h3>Add New Food Item</h3>
+                <span class="close-customer" id="close-food-modal">&times;</span>
+            </div>
+            <form id="food-form">
+                <div class="form-group">
+                    <label for="food-name">Food Name*</label>
+                    <input type="text" id="food-name" required placeholder="e.g. Paneer Wrap">
+                </div>
+                <div class="form-group">
+                    <label for="food-price">Price (INR)*</label>
+                    <input type="number" id="food-price" min="1" required placeholder="e.g. 125">
+                </div>
+                <div class="form-group">
+                    <label for="food-image">Image URL (optional)</label>
+                    <input type="url" id="food-image" placeholder="https://...">
+                </div>
+                <button type="submit" class="submit-btn">Add Item</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lucky Spin Modal -->
+    <div class="customer-modal" id="spin-modal">
+        <div class="customer-content">
+            <div class="customer-header">
+                <h3>Lucky Spin Reward</h3>
+                <span class="close-customer" id="close-spin-modal">&times;</span>
+            </div>
+            <div class="spin-wheel">
+                <h4>Spin once per day and unlock rewards</h4>
+                <button type="button" class="submit-btn" id="spin-now-btn">Spin Now</button>
+                <p class="spin-result" id="spin-result-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Smart Combo Modal -->
+    <div class="customer-modal" id="combo-modal">
+        <div class="customer-content">
+            <div class="customer-header">
+                <h3>Smart Budget Combo</h3>
+                <span class="close-customer" id="close-combo-modal">&times;</span>
+            </div>
+            <form id="combo-form">
+                <div class="form-group">
+                    <label for="combo-budget">Budget (INR)*</label>
+                    <input type="number" id="combo-budget" min="50" required placeholder="e.g. 300">
+                </div>
+                <div class="form-group">
+                    <label for="combo-items">Max Items</label>
+                    <input type="number" id="combo-items" min="1" max="10" value="4">
+                </div>
+                <button type="submit" class="submit-btn">Build My Combo</button>
+                <p class="combo-result" id="combo-result-text"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mood Recommender Modal -->
+    <div class="customer-modal" id="mood-modal">
+        <div class="customer-content">
+            <div class="customer-header">
+                <h3>Mood Recommender</h3>
+                <span class="close-customer" id="close-mood-modal">&times;</span>
+            </div>
+            <form id="mood-form">
+                <div class="form-group">
+                    <label for="mood-type">Select your mood</label>
+                    <select id="mood-type" class="mood-select">
+                        <option value="spicy">Spicy Cravings</option>
+                        <option value="cheesy">Cheesy Mood</option>
+                        <option value="light">Light & Healthy</option>
+                        <option value="sweet">Sweet Tooth</option>
+                        <option value="comfort">Comfort Food</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Recommend Item</button>
+                <p class="combo-result" id="mood-result-text"></p>
+                <button type="button" class="submit-btn" id="add-mood-item-btn" style="display:none;">Add Recommendation to Cart</button>
+            </form>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
@@ -1254,7 +1528,8 @@
         let customerDetails = {};
 
         // DOM elements
-        const menuItems = document.querySelectorAll('.menu--item:not(.see-all)');
+        const menuList = document.querySelector('.menu--list');
+        const menuItems = () => Array.from(document.querySelectorAll('.menu--item:not(.see-all)'));
         const cartIcon = document.querySelector('.cart-icon');
         const floatingCart = document.querySelector('.floating-cart');
         const cartModal = document.querySelector('.cart-modal');
@@ -1262,6 +1537,7 @@
         const cartItemsContainer = document.querySelector('.cart-items');
         const totalPriceElement = document.querySelector('.total-price');
         const searchInput = document.querySelector('.search--box input');
+        const voiceSearchBtn = document.getElementById('voice-search-btn');
         const checkoutBtn = document.querySelector('.checkout-btn');
         const receiptModal = document.querySelector('.receipt-modal');
         const receiptItemsContainer = document.getElementById('receipt-items');
@@ -1275,6 +1551,34 @@
         const customerInfoContainer = document.getElementById('customer-info');
         const thankYouMessage = document.getElementById('thank-you');
         const orderIdDisplay = document.getElementById('order-id-display');
+        const openFoodModalBtn = document.getElementById('open-food-modal');
+        const foodModal = document.getElementById('food-modal');
+        const closeFoodModalBtn = document.getElementById('close-food-modal');
+        const foodForm = document.getElementById('food-form');
+        const openMoodModalBtn = document.getElementById('open-mood-modal');
+        const moodModal = document.getElementById('mood-modal');
+        const closeMoodModalBtn = document.getElementById('close-mood-modal');
+        const moodForm = document.getElementById('mood-form');
+        const moodType = document.getElementById('mood-type');
+        const moodResultText = document.getElementById('mood-result-text');
+        const addMoodItemBtn = document.getElementById('add-mood-item-btn');
+        const openComboModalBtn = document.getElementById('open-combo-modal');
+        const comboModal = document.getElementById('combo-modal');
+        const closeComboModalBtn = document.getElementById('close-combo-modal');
+        const comboForm = document.getElementById('combo-form');
+        const comboResultText = document.getElementById('combo-result-text');
+        const openSpinModalBtn = document.getElementById('open-spin-modal');
+        const spinModal = document.getElementById('spin-modal');
+        const closeSpinModalBtn = document.getElementById('close-spin-modal');
+        const spinNowBtn = document.getElementById('spin-now-btn');
+        const spinResultText = document.getElementById('spin-result-text');
+        const rewardNote = document.getElementById('reward-note');
+        const receiptRewardElement = document.getElementById('receipt-reward');
+        const userItemsStorageKey = 'chatoriGaliUserItems';
+        const spinStorageKey = 'chatoriGaliSpinState';
+
+        let spinState = loadSpinState();
+        let currentMoodSuggestion = null;
 
         // Cart modal functions
         function openCart() {
@@ -1304,7 +1608,9 @@
                 total += parseInt(item.price);
             });
 
-            totalPriceElement.textContent = `₹${total}`;
+            const rewardSummary = calculateRewardSummary(total);
+            totalPriceElement.textContent = `₹${rewardSummary.finalTotal}`;
+            rewardNote.textContent = rewardSummary.note;
 
             // Update cart count
             const cartCountElements = document.querySelectorAll('.cart-icon span, .floating-cart span');
@@ -1322,8 +1628,102 @@
             });
         }
 
-        // Handle menu item click (add to cart + animation)
-        menuItems.forEach(item => {
+        function todayStamp() {
+            const now = new Date();
+            return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+        }
+
+        function loadSpinState() {
+            try {
+                const raw = localStorage.getItem(spinStorageKey);
+                const parsed = JSON.parse(raw || '{}');
+                return parsed && typeof parsed === 'object' ? parsed : {};
+            } catch (error) {
+                return {};
+            }
+        }
+
+        function saveSpinState(nextState) {
+            spinState = nextState;
+            localStorage.setItem(spinStorageKey, JSON.stringify(spinState));
+        }
+
+        function rewardLabel(reward) {
+            if (!reward || reward.type === 'none') return 'No reward yet';
+            if (reward.type === 'discount-percent') return `${reward.value}% OFF on your cart today`;
+            if (reward.type === 'flat-off') return `Flat ₹${reward.value} off reward unlocked`;
+            return 'Reward unlocked';
+        }
+
+        function calculateRewardSummary(subtotal) {
+            const reward = spinState.reward;
+            if (!reward || subtotal <= 0 || spinState.date !== todayStamp()) {
+                return { finalTotal: subtotal, deduction: 0, note: '' };
+            }
+
+            let deduction = 0;
+            if (reward.type === 'discount-percent') {
+                deduction = Math.floor((subtotal * reward.value) / 100);
+            } else if (reward.type === 'flat-off') {
+                deduction = reward.value;
+            }
+
+            deduction = Math.min(deduction, subtotal);
+            const finalTotal = subtotal - deduction;
+            const note = deduction > 0 ? `Lucky Spin Applied: -₹${deduction} (${rewardLabel(reward)})` : '';
+            return { finalTotal, deduction, note };
+        }
+
+        function refreshSpinUi() {
+            if (spinState.date === todayStamp() && spinState.reward) {
+                spinNowBtn.disabled = true;
+                spinNowBtn.textContent = 'Already Spun Today';
+                spinResultText.textContent = rewardLabel(spinState.reward);
+            } else {
+                spinNowBtn.disabled = false;
+                spinNowBtn.textContent = 'Spin Now';
+                spinResultText.textContent = '';
+            }
+        }
+
+        function createMenuItemElement(item) {
+            const fallbackImage = 'https://pngimg.com/d/food_PNG47.png';
+            const safeName = (item.name || '').trim();
+            const safePrice = Number(item.price);
+            const safeImageUrl = (item.imageUrl || '').trim();
+
+            const newItem = document.createElement('div');
+            newItem.className = 'menu--item';
+            newItem.innerHTML = `
+                <span class="price-tag">₹${safePrice}</span>
+                <img src="${safeImageUrl || fallbackImage}" alt="${safeName}">
+                <h5>${safeName}</h5>
+            `;
+            return newItem;
+        }
+
+        function loadSavedUserItems() {
+            try {
+                const raw = localStorage.getItem(userItemsStorageKey);
+                const parsed = JSON.parse(raw || '[]');
+                return Array.isArray(parsed) ? parsed : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function saveUserItem(item) {
+            const existing = loadSavedUserItems();
+            existing.push(item);
+            localStorage.setItem(userItemsStorageKey, JSON.stringify(existing));
+        }
+
+        function bindMenuItemClick(item) {
+            if (item.dataset.boundToCart === '1') {
+                return;
+            }
+
+            item.dataset.boundToCart = '1';
             item.addEventListener('click', function() {
                 // Animation
                 this.style.transform = 'scale(0.95)';
@@ -1353,15 +1753,342 @@
                 // Update cart
                 updateCartDisplay();
             });
+        }
+
+        // Restore user-added items from previous sessions
+        const seeAllCard = document.querySelector('.menu--item.see-all');
+        loadSavedUserItems().forEach(item => {
+            const restoredItem = createMenuItemElement(item);
+            menuList.insertBefore(restoredItem, seeAllCard);
+            bindMenuItemClick(restoredItem);
         });
 
+        // Handle menu item click (add to cart + animation)
+        menuItems().forEach(bindMenuItemClick);
+
         // Search functionality
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            menuItems.forEach(item => {
-                const itemName = item.querySelector('h5').textContent.toLowerCase();
-                item.style.display = itemName.includes(searchTerm) ? 'flex' : 'none';
+        function normalizeText(value) {
+            return (value || '')
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^\w\s\u0900-\u097f]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function normalizeVoiceQuery(transcript) {
+            const tokenMap = {
+                'burger': 'burger',
+                'pizza': 'pizza',
+                'momo': 'momos',
+                'momos': 'momos',
+                'dosa': 'dosa',
+                'idli': 'idli',
+                'noodles': 'chowmein',
+                'chowmein': 'chowmein',
+                'coffee': 'coffee',
+                'cappuccino': 'coffee',
+                'sandwich': 'sandwich',
+                'samosa': 'samosa',
+                'thali': 'thali',
+                'biryani': 'biryani',
+                'maggie': 'maggie',
+                'pasta': 'pasta'
+            };
+
+            const stopWords = new Set([
+                'mujhe', 'please', 'show', 'search', 'for', 'dish', 'item',
+                'showing', 'find', 'me', 'my', 'want', 'to', 'the', 'a', 'an'
+            ]);
+
+            const tokens = normalizeText(transcript)
+                .split(' ')
+                .filter(Boolean)
+                .map(token => tokenMap[token] || token)
+                .filter(token => !stopWords.has(token));
+
+            return tokens.join(' ');
+        }
+
+        function filterMenuItems(term) {
+            const searchTerm = normalizeVoiceQuery(term);
+            const tokens = searchTerm.split(' ').filter(token => token.length > 1);
+
+            menuItems().forEach(item => {
+                const itemName = normalizeText(item.querySelector('h5').textContent);
+                const matchesFull = !searchTerm || itemName.includes(searchTerm);
+                const matchesToken = tokens.some(token => itemName.includes(token));
+                item.style.display = (matchesFull || matchesToken) ? 'flex' : 'none';
             });
+        }
+
+        searchInput.addEventListener('input', function() {
+            filterMenuItems(this.value);
+        });
+
+        // Voice search feature
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-IN';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            voiceSearchBtn.addEventListener('click', () => {
+                try {
+                    recognition.start();
+                } catch (error) {
+                    // Ignore start errors caused by rapid multi-click.
+                }
+            });
+
+            recognition.onstart = () => {
+                voiceSearchBtn.classList.add('listening');
+                voiceSearchBtn.title = 'Listening...';
+            };
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript.trim();
+                const query = normalizeVoiceQuery(transcript);
+                searchInput.value = query;
+                filterMenuItems(query);
+            };
+
+            recognition.onerror = () => {
+                alert('Voice search failed. Please try again.');
+            };
+
+            recognition.onend = () => {
+                voiceSearchBtn.classList.remove('listening');
+                voiceSearchBtn.title = 'Search by voice';
+            };
+        } else {
+            voiceSearchBtn.style.opacity = '0.5';
+            voiceSearchBtn.title = 'Voice search not supported in this browser';
+            voiceSearchBtn.addEventListener('click', () => {
+                alert('Your browser does not support voice search.');
+            });
+        }
+
+        // Add user food item
+        function openFoodModal() {
+            foodModal.style.display = 'flex';
+        }
+
+        function closeFoodModal() {
+            foodModal.style.display = 'none';
+            foodForm.reset();
+        }
+
+        function openMoodModal() {
+            moodModal.style.display = 'flex';
+            moodResultText.textContent = '';
+            addMoodItemBtn.style.display = 'none';
+            currentMoodSuggestion = null;
+        }
+
+        function closeMoodModal() {
+            moodModal.style.display = 'none';
+            moodForm.reset();
+        }
+
+        function openComboModal() {
+            comboModal.style.display = 'flex';
+            comboResultText.textContent = '';
+        }
+
+        function closeComboModal() {
+            comboModal.style.display = 'none';
+            comboForm.reset();
+        }
+
+        function openSpinModal() {
+            spinModal.style.display = 'flex';
+            refreshSpinUi();
+        }
+
+        function closeSpinModal() {
+            spinModal.style.display = 'none';
+        }
+
+        openFoodModalBtn.addEventListener('click', openFoodModal);
+        closeFoodModalBtn.addEventListener('click', closeFoodModal);
+        foodModal.addEventListener('click', (e) => {
+            if (e.target === foodModal) closeFoodModal();
+        });
+
+        openMoodModalBtn.addEventListener('click', openMoodModal);
+        closeMoodModalBtn.addEventListener('click', closeMoodModal);
+        moodModal.addEventListener('click', (e) => {
+            if (e.target === moodModal) closeMoodModal();
+        });
+
+        openComboModalBtn.addEventListener('click', openComboModal);
+        closeComboModalBtn.addEventListener('click', closeComboModal);
+        comboModal.addEventListener('click', (e) => {
+            if (e.target === comboModal) closeComboModal();
+        });
+
+        openSpinModalBtn.addEventListener('click', openSpinModal);
+        closeSpinModalBtn.addEventListener('click', closeSpinModal);
+        spinModal.addEventListener('click', (e) => {
+            if (e.target === spinModal) closeSpinModal();
+        });
+
+        spinNowBtn.addEventListener('click', () => {
+            if (spinState.date === todayStamp()) {
+                refreshSpinUi();
+                return;
+            }
+
+            const rewards = [
+                { type: 'discount-percent', value: 10 },
+                { type: 'discount-percent', value: 15 },
+                { type: 'flat-off', value: 40 },
+                { type: 'flat-off', value: 60 },
+                { type: 'none', value: 0 }
+            ];
+
+            const selected = rewards[Math.floor(Math.random() * rewards.length)];
+            saveSpinState({ date: todayStamp(), reward: selected });
+            refreshSpinUi();
+            updateCartDisplay();
+        });
+
+        function getMenuCatalog() {
+            return menuItems().map((item) => {
+                const name = item.querySelector('h5').textContent.trim();
+                const price = Number(item.querySelector('.price-tag').textContent.replace(/[^\d]/g, ''));
+                return { name, price };
+            }).filter((item) => item.name && Number.isFinite(item.price) && item.price > 0);
+        }
+
+        function findItemByKeyword(catalog, keyword) {
+            return catalog.find((item) => item.name.toLowerCase().includes(keyword));
+        }
+
+        function getMoodRecommendation(catalog, mood) {
+            const moodKeywords = {
+                spicy: ['chili', 'chole', 'pav bhaji', 'samosa', 'maggie'],
+                cheesy: ['burger', 'pizza', 'sandwich', 'pasta'],
+                light: ['salad', 'idli', 'dosa', 'coffee'],
+                sweet: ['cake', 'lassi'],
+                comfort: ['thali', 'biryani', 'dabeli', 'paratha']
+            };
+
+            const keywords = moodKeywords[mood] || [];
+            for (const keyword of keywords) {
+                const found = findItemByKeyword(catalog, keyword);
+                if (found) return found;
+            }
+
+            return catalog[Math.floor(Math.random() * catalog.length)] || null;
+        }
+
+        function buildSmartCombo(catalog, budget, maxItems) {
+            let bestCombo = [];
+            let bestTotal = 0;
+
+            const attempts = 320;
+            for (let attempt = 0; attempt < attempts; attempt++) {
+                const shuffled = [...catalog].sort(() => Math.random() - 0.5);
+                const combo = [];
+                let total = 0;
+
+                for (const item of shuffled) {
+                    if (combo.length >= maxItems) break;
+                    if (total + item.price <= budget) {
+                        combo.push(item);
+                        total += item.price;
+                    }
+                }
+
+                if (total > bestTotal) {
+                    bestTotal = total;
+                    bestCombo = combo;
+                }
+
+                if (bestTotal === budget) break;
+            }
+
+            return { combo: bestCombo, total: bestTotal };
+        }
+
+        comboForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const budget = Number(document.getElementById('combo-budget').value);
+            const maxItems = Number(document.getElementById('combo-items').value) || 4;
+
+            if (!budget || budget < 50) {
+                comboResultText.textContent = 'Enter a valid budget (minimum ₹50).';
+                return;
+            }
+
+            const catalog = getMenuCatalog();
+            if (!catalog.length) {
+                comboResultText.textContent = 'No menu items available for combo generation.';
+                return;
+            }
+
+            const result = buildSmartCombo(catalog, budget, Math.min(Math.max(maxItems, 1), 10));
+            if (!result.combo.length) {
+                comboResultText.textContent = 'Could not build a combo under this budget. Try a higher budget.';
+                return;
+            }
+
+            cart = result.combo.map((item) => ({ name: item.name, price: item.price }));
+            updateCartDisplay();
+            comboResultText.textContent = `Built combo: ${result.combo.length} items, total ₹${result.total}. Added to cart.`;
+            openCart();
+        });
+
+        moodForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const catalog = getMenuCatalog();
+            if (!catalog.length) {
+                moodResultText.textContent = 'No menu items available for recommendations.';
+                addMoodItemBtn.style.display = 'none';
+                return;
+            }
+
+            const recommendation = getMoodRecommendation(catalog, moodType.value);
+            if (!recommendation) {
+                moodResultText.textContent = 'Could not find a recommendation right now.';
+                addMoodItemBtn.style.display = 'none';
+                return;
+            }
+
+            currentMoodSuggestion = recommendation;
+            moodResultText.textContent = `Try: ${recommendation.name} (₹${recommendation.price})`;
+            addMoodItemBtn.style.display = 'block';
+        });
+
+        addMoodItemBtn.addEventListener('click', function() {
+            if (!currentMoodSuggestion) return;
+            cart.push({ name: currentMoodSuggestion.name, price: currentMoodSuggestion.price });
+            updateCartDisplay();
+            closeMoodModal();
+            openCart();
+        });
+
+        foodForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('food-name').value.trim();
+            const price = Number(document.getElementById('food-price').value);
+            const imageUrl = document.getElementById('food-image').value.trim();
+
+            if (!name || !price || price < 1) {
+                alert('Please enter valid name and price');
+                return;
+            }
+
+            const userItem = { name, price, imageUrl };
+            const newItem = createMenuItemElement(userItem);
+            menuList.insertBefore(newItem, seeAllCard);
+            bindMenuItemClick(newItem);
+            saveUserItem(userItem);
+            closeFoodModal();
         });
 
         // Special offer timer
@@ -1460,7 +2187,7 @@
                 document.querySelector('.loading-spinner').style.display = 'none';
                 generateReceipt();
                 closeCartModal();
-                
+
                 // Show thank you message
                 thankYouMessage.style.display = 'block';
                 const orderId = Math.floor(1000 + Math.random() * 9000);
@@ -1473,6 +2200,8 @@
         function generateReceipt() {
             receiptItemsContainer.innerHTML = '';
             customerInfoContainer.innerHTML = '';
+            receiptRewardElement.style.display = 'none';
+            receiptRewardElement.innerHTML = '';
 
             let total = 0;
             const orderDate = new Date();
@@ -1504,7 +2233,13 @@
                 total += item.price;
             });
 
-            receiptTotalElement.textContent = `₹${total}`;
+            const rewardSummary = calculateRewardSummary(total);
+            if (rewardSummary.deduction > 0) {
+                receiptRewardElement.style.display = 'flex';
+                receiptRewardElement.innerHTML = `<span>Lucky Spin Discount</span><span>-₹${rewardSummary.deduction}</span>`;
+            }
+
+            receiptTotalElement.textContent = `₹${rewardSummary.finalTotal}`;
             receiptModal.style.display = 'flex';
             
             // Clear cart after generating receipt
